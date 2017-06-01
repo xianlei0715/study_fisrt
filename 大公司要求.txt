@@ -1,0 +1,46 @@
+1.介绍一些ConcurrentHashMap以及底层原理。
+可类比HashMap的底层，数组+链表思想。通过HashCode来决定Key在数组中的位置，然后以一个Bucket（桶）的形式处理Map.Entry对象。ConcurrentHashMap只不过在Bucket上加锁处理，在Map达到负载容量后，会重排序Bucket，此时涉及到线程安全问题。
+2.LinkedList， ArrayList区别，分别在那种情况下选用。
+LinkedList 底层是链表，适用于有更新操作，ArrayList底层为数组，适用于快速索引访问。
+3.你用过哪些设计模式
+单例模式 --- 引出懒汉、饿汉式写法，按需加载式、枚举式单例，还有一个DCL双锁机制单例，这些都需要代码说明。
+工厂模式、动态代理模式--- 会让你拓展的展开，代理模式是怎么回事，动态代理是怎么回事。关键字：InvocationHandler， 反射
+4.Spring 中的容器理解
+IoC, 各模块协同工作，由容器来管理Bean
+5.Int 多少字节，一个对象的大小编译期间能确定大小吗
+int 4字节（哈哈），当时我说能，在编译期间对象的大小就能够确定下来，计算对象的属性字段即可，然后问我String能确定吗，当时差点被绕进去。
+6.聊聊Volatile关键字
+轻量级同步方案
+昨天 21:37:02
+鲜磊
+6.聊聊Volatile关键字
+轻量级同步方案
+7.线程在执行同步的静态和非静态方法时，有什么区别。
+线程进入了一个类的静态方法后，其他线程不能进入该类的同步静态方法
+线程进入了一个类的非静态方法（实例方法）后，其他线程不能进入该类的同步实例方法
+7.平时逛哪些社区，怎么拓展Java技术（非技术性问题）。
+ImportNew，开源项目
+
+
+1.介绍一些JVM的内存结构
+上Heap，VM Stack，Native Stack， Method area， PC， JVM Engine
+2.类加载方式
+Bootstrap ClassLoader、Extension ClassLoader、 Application ClassLoader、 委派加载
+3.对象从New到被回收，经历了哪些过程
+Eden，Survivavor、老年代
+4.介绍G1及处理过程，有什么优势
+回答的不满意。
+5.设计一个日志生产者-消费者队列方案
+我提到了一个BlockedQueue. 解决队列满了，然后多线程生产，多线程消费，怎么控制。没答好，他提示了用ExecutorService配置线程池，配置线程方式（可丢弃，继续等待），这个方案令我茅塞顿开，以前从没用过，这个在三面时帮我大忙了。
+6.两个Oracle实例，相同的查询（一条SQL）怎么返回不同的结果
+折腾半天都不会。他提示说用数据库的某个字段如ID取模， select update 语句
+7.深入聊聊设计模式，如单例中的DCL
+代码说明就好
+8. 继续聊Volatile
+线程可见性、指令重排序
+9.LRU设计
+HashMap+双向链表
+然后进入三面，面试官感觉很nice，几乎是京东的场景回顾设计，涉及到负载，集群，多线程，数据库等，自由发挥吧。
+如 统计Dao层方法，Service方法的执行情况
+用工具：jhat,jstack, jmap, VisualVM
+用AOP
